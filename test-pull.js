@@ -1,12 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2021-08-28 18:06:15
+ * @LastEditTime: 2021-08-28 18:07:18
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /git-node-tool/test-pull.js
+ */
+let Date = require('./date');
 
+let { exitsFolder, parsePath } = require('./node-common.js');
 
-
-
-let Date = require('./util');
-
-let {exitsFolder,parsePath} = require('./node-common.js');
-
-let {gitPull,gitClone} =require('./git-common')
+let { gitPull, gitClone } = require('./git-common')
 
 const argv = process.argv
 
@@ -17,8 +21,8 @@ if (argv.length <= 2) {
 const githref = argv[2]
 
 if (argv.length <= 3) {
-  console.log("请指定脚本执行间隔时间!--->例如：60s 则输入:node gitpull.js 'D:\\xxx\\xxxx'  60")
-  return
+    console.log("请指定脚本执行间隔时间!--->例如：60s 则输入:node gitpull.js 'D:\\xxx\\xxxx'  60")
+    return
 }
 const looptime = argv[3]
 const cloneDress = argv[4]
@@ -27,32 +31,32 @@ const cloneDress = argv[4]
 
 
 async function isPull() {
-  let time=new Date().format("yyyy-MM-dd hh:mm:ss");
-  console.log(time)
-  await gitPull(githref)
-  time=new Date().format("yyyy-MM-dd hh:mm:ss");
-  console.log(time)
+    let time = new Date().format("yyyy-MM-dd hh:mm:ss");
+    console.log(time)
+    await gitPull(githref)
+    time = new Date().format("yyyy-MM-dd hh:mm:ss");
+    console.log(time)
 }
 
 async function isClone(git) {
-  let time=new Date().format("yyyy-MM-dd hh:mm:ss");
-  console.log(time)
-  await gitClone(git,cloneDress)
-  time=new Date().format("yyyy-MM-dd hh:mm:ss");
-  console.log(time)
+    let time = new Date().format("yyyy-MM-dd hh:mm:ss");
+    console.log(time)
+    await gitClone(git, cloneDress)
+    time = new Date().format("yyyy-MM-dd hh:mm:ss");
+    console.log(time)
 }
 
 async function toGoCloneOrPull() {
-  if(await exitsFolder(githref)){
-    console.log(githref)
-    console.log("shifoucunzai")
-    if(await exitsFolder(githref+"/.git")){
-      isPull()
+    if (await exitsFolder(githref)) {
+        console.log(githref)
+        console.log("shifoucunzai")
+        if (await exitsFolder(githref + "/.git")) {
+            isPull()
+        }
+    } else {
+        let cloneHref = await parsePath(githref)
+        isClone(cloneHref)
     }
-  }else{
-    let cloneHref=await parsePath(githref)
-    isClone(cloneHref)
-  }
 }
 toGoCloneOrPull()
 

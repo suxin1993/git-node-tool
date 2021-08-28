@@ -1,11 +1,11 @@
 {
-  "name": "test-pull",
-  "version": "1.0.0",
-  "description": "suxin",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "suxin",
-  "license": "ISC"
+    "name": "test-pull",
+    "version": "1.0.0",
+    "description": "suxin",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "suxin",
+    "license": "ISC"
 }
