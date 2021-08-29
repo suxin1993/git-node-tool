@@ -10,7 +10,7 @@ let Date = require('./date');
 
 let { exitsFolder, parsePath,pathBasename,pathBasefilename,pathJoinDir } = require('./node-common.js');
 
-let { gitPull, gitClone } = require('./git-common')
+let { gitPull, gitClone,gitLog ,gitLogLast} = require('./git-common')
 
 const argv = process.argv
 
@@ -29,6 +29,10 @@ async function isPull() {
     let time = new Date().format("yyyy-MM-dd hh:mm:ss");
     console.log(time)
     await gitPull(githref)
+
+    // let log = await gitLog(githref)
+    let log = await gitLogLast(githref)
+    console.log(log)
     time = new Date().format("yyyy-MM-dd hh:mm:ss");
     console.log(time)
 }
