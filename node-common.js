@@ -188,6 +188,26 @@ exports.dirExists = async function(dir) {
 exports.pathBasename = function(dir) {
     return paths.basename(dir)
 }
+
+/**
+ * 获取文件名除了后缀名以外名字
+ * @param {string} dir 路径
+ */
+ exports.pathBasefilename = function(dir) {
+     let ext = paths.extname(paths.basename(dir))
+    return paths.basename(dir,ext)
+}
+/**
+ * 拼接路径
+ * @param {string} dir 路径
+ */
+ exports.pathJoinDir = function(dir,dirTwo) {
+   return paths.join(dir, dirTwo)
+}
+
+
+
+
 /**
  * 文件扩展名
  * @param {string} flleName 文件名
