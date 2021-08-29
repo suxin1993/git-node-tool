@@ -124,6 +124,12 @@ exports.gitCommit = async function(filePath,name) {
         // 获取最近一次的提交的commit id git rev-parse HEAD
         // `git show 不加 --stat 查看最后一次提价详情  
         // `git show commit id ，显示某一次commit的详情
+        //  git log -n n表示最近的几次
+        //  git log --oneline
+        //  git log --reverse --oneline
+        // git log --author=suxin --oneline -5
+        // git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
+        // git show --pretty=format:"%ci %cr" | head -1
         const { stdout  , stderr } = await exec(`git show --stat`, { cwd: filePath });
         return stdout
     } catch (e) {
